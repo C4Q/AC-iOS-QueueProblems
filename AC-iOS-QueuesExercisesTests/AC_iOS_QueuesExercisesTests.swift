@@ -22,7 +22,6 @@ class AC_iOS_QueuesExercisesTests: XCTestCase {
         otherQueue.enqueue(8)
         otherQueue.enqueue(11)
         otherQueue.enqueue(9)
-        
     }
     
     override func tearDown() {
