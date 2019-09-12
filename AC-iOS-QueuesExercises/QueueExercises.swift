@@ -91,6 +91,21 @@ func reversed<T>(q: Queue<T>) -> Queue<T> {
 //5 Determine if two Queues are equal
 
 func areEqual<T: Equatable>(qOne: Queue<T>, qTwo: Queue<T>) -> Bool {
-    return false
+    var queueOne = qOne
+    var queueTwo = qTwo
+    
+    while queueOne.isEmpty == false && queueTwo.isEmpty == false { //checks both queues are not empty
+        if queueOne.dequeue()! != queueTwo.dequeue()! { // if element being dequeue  are not the  same in both q's, return false.
+            return false
+        }
+    }
+    
+    if queueOne.isEmpty == true && queueTwo.isEmpty == true {
+        //if after dequeing both queue, both should be empty for the queues to be equal
+        //checks both queues are not empty
+        return true
+    } else {
+        return false
+    }
 }
 
