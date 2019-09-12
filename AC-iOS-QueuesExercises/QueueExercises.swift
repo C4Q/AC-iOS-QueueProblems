@@ -48,6 +48,18 @@ False example   (Back) 4 - 19 - 134 - 200 (Front)
 */
 
 func isSorted<T: Comparable>(q: Queue<T>) -> Bool {
+    guard q.isEmpty == false else { return true }
+    var copyOfq = q  //5, 10, 13, 17
+    var previous = copyOfq.dequeue()! //returns 5 first time
+    
+    while copyOfq.isEmpty == false {
+        var next = copyOfq.dequeue()! //value is 10 first time
+        if previous > next {
+            return false
+        } else {
+            previous = next
+        }
+    }
     return true
 }
 
@@ -57,9 +69,23 @@ func isSorted<T: Comparable>(q: Queue<T>) -> Bool {
 Sample Input:   (Back) 9 - 16 - 2 - 31 (Front)
 Sample Output:  (Back) 31 - 2 - 16 - 9 (Front)
  */
-
+//
 func reversed<T>(q: Queue<T>) -> Queue<T> {
-    return q
+    var copyOfq = q //makes copy of queue
+    var reveresedq = Queue<T>() //initialization of queue to be returned
+    var helperArray = [T]() //array to hold values of elements being queue
+    
+    while copyOfq.isEmpty == false {
+        let element = copyOfq.dequeue()! //dequeue first element of queue
+        helperArray.append(element) //adds dequeued element to helper
+    }
+    
+    while !helperArray.isEmpty {
+        let element = helperArray.popLast()! //pops last element of array
+        reveresedq.enqueue(element) //adds deleted element to queue to be returned
+    }
+    
+    return reveresedq
 }
 
 //5 Determine if two Queues are equal
